@@ -253,6 +253,7 @@ DItemRevisionGUID=
 
 [Generic_SmartPDF]
 AutoOpenFile=-1
+AutoOpenOutJob=-1
 
 [Generic_SmartPDFSettings]
 ProjectMode=-1
@@ -266,15 +267,20 @@ SCH_PrintColor=0
 SCH_ShowNoErc=0
 SCH_ShowParameter=-1
 SCH_ShowProbes=0
-OutputFileName=EDA-01772-V1.PrjPcb=D:\EDA-En cours\EDA-01772 - Royer - I Secondary Protection\PCB-Layout\EDA-01772-V1-0_pcb.pdf
-SCH_ExpandLogicalToPhysical=-1
-SCH_VariantName=[None]
+OutputFileName=SVEC.PrjPcb=C:\Users\Greg\Documents\DESIGNS\SVEC\SVFC_v0.6\trunk\circuit_board\SVEC\SVEC.pdf
+SCH_ExpandLogicalToPhysical=0
+SCH_VariantName=[No Variations]
 SCH_ExpandComponentDesignators=-1
 SCH_ExpandNetlabels=0
 SCH_ExpandPorts=0
 SCH_ExpandSheetNumber=0
 SCH_ExpandDocumentNumber=0
 SCH_HasExpandLogicalToPhysicalSheets=-1
+ExportBOM=0
+TemplateFilename=..\..\..\Altium\CERN_Files\Templates\BOM\CERN-AltiumMat Template.XLT
+TemplateStoreRelative=-1
+SCH_ShowBlankets=-1
+SaveSettingsToOutJob=0
 
 [OutputGroup1]
 Name=Netlist Outputs
