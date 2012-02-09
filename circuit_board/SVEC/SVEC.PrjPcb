@@ -132,7 +132,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
 [Document8]
-DocumentPath=Schematics\FrontPannel.SchDoc
+DocumentPath=Schematics\FrontPanel.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
