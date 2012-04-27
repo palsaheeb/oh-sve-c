@@ -1,0 +1,115 @@
+Vref = 0.765V
+Vout / Vref = 1.53V
+tolerance = 1%Vout / Vref = 2.000
+(Vout / Vref) - 1 = 1.000 = R1 / R2
+R1 =  100.0?    R2 =  100.0?    Ir =   7.650mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  110.0?    R2 =  110.0?    Ir =   6.955mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  120.0?    R2 =  120.0?    Ir =   6.375mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  130.0?    R2 =  130.0?    Ir =   5.885mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  150.0?    R2 =  150.0?    Ir =   5.100mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  160.0?    R2 =  160.0?    Ir =   4.781mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  180.0?    R2 =  180.0?    Ir =   4.250mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  200.0?    R2 =  200.0?    Ir =   3.825mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  220.0?    R2 =  220.0?    Ir =   3.477mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  240.0?    R2 =  240.0?    Ir =   3.188mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  270.0?    R2 =  270.0?    Ir =   2.833mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  300.0?    R2 =  300.0?    Ir =   2.550mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  330.0?    R2 =  330.0?    Ir =   2.318mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  360.0?    R2 =  360.0?    Ir =   2.125mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  390.0?    R2 =  390.0?    Ir =   1.962mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  430.0?    R2 =  430.0?    Ir =   1.779mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  470.0?    R2 =  470.0?    Ir =   1.628mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+R1 =  510.0?    R2 =  510.0?    Ir =   1.500mA  Vout =   1.530V R1/R2 =  1.000  Rerror = 0.00%
+
+
+Power estimation:
+
+P1V2
+AFPGA 3A
+SFPGA 500mA
+
+P1V5
+AFPGA 1A + 2x DDR3 (max 2x 530mW )
+(http://download.micron.com/pdf/technotes/ddr3/TN41_01DDR3%20Power.pdf)
+estimated power from P1V5 is about 1.5A
+
+P2V5
+AFPGA 2A
+
+P2V5_FMC1
+FMC slot 2A (HPC - 4A, LPC - 2A)
+
+P2V5_FMC2
+FMC slot 2A (HPC - 4A, LPC - 2A)
+
+P3V3_FMC1
+FMC slot 3A
+
+P3V3_FMC2
+FMC slot 3A
+
+P12V_FMC1 1A
+P12V_FMC2 1A
+
+P3V3
+AFPGA+SFPGA (Vccaux, IO) 3A
+VME interface 1A
+
+
+Vref = 0.765V
+Vout / Vref = 1.2V
+tolerance = 1%Vout / Vref = 1.569
+(Vout / Vref) - 1 = 0.569 = R1 / R2
+R1 =  220.0?    R2 =  390.0?    Ir =   1.962mA  Vout =   1.197V R1/R2 =   0.564 Rerror =  0.80%
+R1 =  390.0?    R2 =  680.0?    Ir =   1.125mA  Vout =   1.204V R1/R2 =   0.574 Rerror =  0.86%
+R1 =  430.0?    R2 =  750.0?    Ir =   1.020mA  Vout =   1.204V R1/R2 =   0.573 Rerror =  0.83%
+R1 =  470.0?    R2 =  820.0?    Ir =   0.933mA  Vout =   1.203V R1/R2 =   0.573 Rerror =  0.80%
+R1 =  620.0?    R2 = 1100.0?    Ir =   0.695mA  Vout =   1.196V R1/R2 =   0.564 Rerror =  0.88%
+R1 =  680.0?    R2 = 1200.0?    Ir =   0.638mA  Vout =   1.199V R1/R2 =   0.567 Rerror =  0.34%
+R1 =  910.0?    R2 = 1600.0?    Ir =   0.478mA  Vout =   1.200V R1/R2 =   0.569 Rerror =  0.02%
+
+
+Vref = 0.765V
+Vout / Vref = 2.5V
+tolerance = 1%Vout / Vref = 3.268
+(Vout / Vref) - 1 = 2.268 = R1 / R2
+
+R1 = 2700.0?    R2 = 1200.0?    Ir =   0.638mA  Vout =   2.486V R1/R2 =   2.250 Rerror =  0.79%
+R1 = 3600.0?    R2 = 1600.0?    Ir =   0.478mA  Vout =   2.486V R1/R2 =   2.250 Rerror =  0.79%
+R1 = 6800.0?    R2 = 3000.0?    Ir =   0.255mA  Vout =   2.499V R1/R2 =   2.267 Rerror =  0.06%
+R1 = 7500.0?    R2 = 3300.0?    Ir =   0.232mA  Vout =   2.504V R1/R2 =   2.273 Rerror =  0.21%
+R1 = 8200.0?    R2 = 3600.0?    Ir =   0.213mA  Vout =   2.508V R1/R2 =   2.278 Rerror =  0.43%
+
+
+DC/DC calculations,Voripple=30mV
+2.5V,Imax=5.4A, L=1uH, Rtrip = 5670, C=50uF, ILpeak=3.75
+1.2V,Imax=4A, L=1uH, Rtrip=4200,C=80,ILpeak=6A
+2.5V,Imax=4A, L=1uH, Rtrip = 4200, C=80uF, ILpeak=6
+1.5V,Imax=4A, L=1uH, Rtrip=4200, C=33uF,ILpeak=6A
+
+
+
+Vref = 0.7V
+Vout / Vref = 12V
+tolerance = 5%Vout / Vref = 17.143
+(Vout / Vref) - 1 = 16.143 = R1 / R2
+R1 = 1600.0?    R2 =  100.0?    Ir =  7.000mA   Vout =  11.900V R1/R2 = 16.000  Rerror =  0.88%
+R1 = 1800.0?    R2 =  110.0?    Ir =   6.364mA  Vout =  12.155V R1/R2 =  16.364 Rerror =  1.37%
+R1 = 2000.0?    R2 =  120.0?    Ir =   5.833mA  Vout =  12.367V R1/R2 =  16.667 Rerror =  3.24%
+R1 = 2000.0?    R2 =  130.0?    Ir =   5.385mA  Vout =  11.469V R1/R2 =  15.385 Rerror =  4.70%
+R1 = 2200.0?    R2 =  130.0?    Ir =   5.385mA  Vout =  12.546V R1/R2 =  16.923 Rerror =  4.83%
+R1 = 2400.0?    R2 =  150.0?    Ir =   4.667mA  Vout =  11.900V R1/R2 = 16.000  Rerror =  0.88%
+R1 = 2700.0?    R2 =  160.0?    Ir =   4.375mA  Vout =  12.513V R1/R2 =  16.875 Rerror =  4.54%
+R1 = 3000.0?    R2 =  180.0?    Ir =   3.889mA  Vout =  12.367V R1/R2 =  16.667 Rerror =  3.24%
+R1 = 3300.0?    R2 =  200.0?    Ir =   3.500mA  Vout =  12.250V R1/R2 =  16.500 Rerror =  2.21%
+R1 = 3600.0?    R2 =  220.0?    Ir =   3.182mA  Vout =  12.155V R1/R2 =  16.364 Rerror =  1.37%
+R1 = 3900.0?    R2 =  240.0?    Ir =   2.917mA  Vout =  12.075V R1/R2 =  16.250 Rerror =  0.66%
+R1 = 4300.0?    R2 =  270.0?    Ir =   2.593mA  Vout =  11.848V R1/R2 =  15.926 Rerror =  1.34%
+R1 = 4700.0?    R2 =  300.0?    Ir =   2.333mA  Vout =  11.667V R1/R2 =  15.667 Rerror =  2.95%
+R1 = 5100.0?    R2 =  330.0?    Ir =   2.121mA  Vout =  11.518V R1/R2 =  15.455 Rerror =  4.26%
+R1 = 5600.0?    R2 =  360.0?    Ir =   1.944mA  Vout =  11.589V R1/R2 =  15.556 Rerror =  3.64%
+R1 = 6200.0?    R2 =  390.0?    Ir =   1.795mA  Vout =  11.828V R1/R2 =  15.897 Rerror =  1.52%
+R1 = 6800.0?    R2 =  430.0?    Ir =   1.628mA  Vout =  11.770V R1/R2 =  15.814 Rerror =  2.04%
+R1 = 7500.0?    R2 =  470.0?    Ir =   1.489mA  Vout =  11.870V R1/R2 =  15.957 Rerror =  1.15%
+R1 = 8200.0?    R2 =  510.0?    Ir =   1.373mA  Vout =  11.955V R1/R2 =  16.078 Rerror =  0.40%
+R1 = 9100.0?    R2 =  560.0?    Ir =   1.250mA  Vout =  12.075V R1/R2 =  16.250 Rerror =  0.66%
