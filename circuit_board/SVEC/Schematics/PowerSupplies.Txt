@@ -113,3 +113,12 @@ R1 = 6800.0?    R2 =  430.0?    Ir =   1.628mA  Vout =  11.770V R1/R2 =  15.814 
 R1 = 7500.0?    R2 =  470.0?    Ir =   1.489mA  Vout =  11.870V R1/R2 =  15.957 Rerror =  1.15%
 R1 = 8200.0?    R2 =  510.0?    Ir =   1.373mA  Vout =  11.955V R1/R2 =  16.078 Rerror =  0.40%
 R1 = 9100.0?    R2 =  560.0?    Ir =   1.250mA  Vout =  12.075V R1/R2 =  16.250 Rerror =  0.66%
+
+
+
+PLL settings
+OUT0, 1 div 0, LVPECL
+OUT 2,3 div 1, LVPECL
+OUT 4,5, div 2, LVPECL
+OUT 6,7, div 3, LVDS/LVPECL
+OUT 8,9, div 4, LVDS/LVPECL
