@@ -6,7 +6,7 @@
 -- Author     : Tomasz Wlostowski
 -- Company    : CERN
 -- Created    : 2011-08-24
--- Last update: 2014-02-03
+-- Last update: 2014-08-11
 -- Platform   : FPGA-generic
 -- Standard   : VHDL'93
 -------------------------------------------------------------------------------
@@ -104,7 +104,13 @@ entity svec_top is
       fmc1_scl_b : inout std_logic;
       fmc1_sda_b : inout std_logic;
 
-      tempid_dq_b : inout std_logic
+      tempid_dq_b : inout std_logic;
+
+     flash_sck_o  : out  std_logic;
+     flash_mosi_o : out std_logic;
+     flash_cs_n_O : out  std_logic;
+     flash_miso_i : in std_logic
+      
       );
 
 end svec_top;
@@ -173,19 +179,21 @@ architecture rtl of svec_top is
   signal VME_ADDR_b_out                                        : std_logic_vector(31 downto 1);
   signal VME_LWORD_n_b_out, VME_DATA_DIR_int, VME_ADDR_DIR_int : std_logic;
 
-  constant c_NUM_WB_MASTERS : integer := 2;
+  constant c_NUM_WB_MASTERS : integer := 3;
   constant c_NUM_WB_SLAVES  : integer := 1;
 
   constant c_MASTER_VME : integer := 0;
 
   constant c_SLAVE_GOLDEN   : integer := 0;
   constant c_SLAVE_ONEWIRE  : integer := 1;
-  constant c_DESC_SYNTHESIS : integer := 2;
-  constant c_DESC_REPO_URL  : integer := 3;
+  constant c_SLAVE_GPIO  : integer := 2;
+  constant c_DESC_SYNTHESIS : integer := 3;
+  constant c_DESC_REPO_URL  : integer := 4;
 
   constant c_INTERCONNECT_LAYOUT : t_sdb_record_array(c_NUM_WB_MASTERS + 1 downto 0) :=
     (c_SLAVE_GOLDEN   => f_sdb_embed_device(c_xwb_golden_sdb, x"00010000"),
      c_SLAVE_ONEWIRE  => f_sdb_embed_device(c_xwb_onewire_master_sdb, x"00012000"),
+     c_SLAVE_GPIO  => f_sdb_embed_device(c_xwb_onewire_master_sdb, x"00013000"),
      c_DESC_SYNTHESIS => f_sdb_embed_synthesis(c_sdb_synthesis_info),
      c_DESC_REPO_URL  => f_sdb_embed_repo_url(c_sdb_repo_url)
      );
@@ -214,7 +222,7 @@ architecture rtl of svec_top is
   signal powerup_reset_cnt : unsigned(7 downto 0) := "00000000";
   signal powerup_rst_n     : std_logic            := '0';
   signal sys_locked        : std_logic;
-  
+  signal gpio_out, gpio_in, gpio_b: std_logic_vector(3 downto 0);
 begin
 
   p_powerup_reset : process(clk_sys)
@@ -422,6 +430,22 @@ begin
       master_o  => cnx_master_out);
 
 
+  xwb_gpio_port_1: entity work.xwb_gpio_port
+    generic map (
+      g_interface_mode         => PIPELINED,
+      g_address_granularity    => BYTE,
+      g_num_pins               => 4,
+      g_with_builtin_tristates => false)
+    port map (
+      clk_sys_i  => clk_sys,
+      rst_n_i    => local_reset_n,
+      slave_i    => cnx_master_out(c_SLAVE_GPIO),
+      slave_o    => cnx_master_in(c_SLAVE_GPIO),
+      gpio_b     => gpio_b,
+      gpio_out_o => gpio_out,
+      gpio_in_i  => gpio_in,
+      gpio_oen_o => open);
+  
   U_Onewire : xwb_onewire_master
     generic map (
       g_interface_mode      => PIPELINED,
@@ -457,6 +481,11 @@ begin
       fmc_prsnt_n_i(1) => fmc1_prsntm2c_n_i
       );
 
+
+  flash_mosi_o <= gpio_out(0);
+  flash_sck_o <= gpio_out(1);
+  flash_cs_n_o <= gpio_out(2);
+  gpio_in(3) <= flash_miso_i;
 end rtl;
 
 

@@ -125,7 +125,7 @@ peripheral {
          prefix = "VERSION";
          type = CONSTANT;
          size = 8;
-         value = 3;
+         value = 4;
       }
 
 	};

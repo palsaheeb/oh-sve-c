@@ -43,10 +43,10 @@ package synthesis_descriptor is
 constant c_sdb_synthesis_info : t_sdb_synthesis :=
   (
     syn_module_name => "svec-golden     ",
-    syn_commit_id => "daf244bfc22002fbf68514441cd45c23",
+    syn_commit_id => "1ac14fefeb80a390f0ac6a1a0f94c64a",
     syn_tool_name => "ISE     ",
     syn_tool_version => x"00000133",
-    syn_date => x"20140204",
+    syn_date => x"20140306",
     syn_username => "twlostow       ");
 
 constant c_sdb_repo_url : t_sdb_repo_url :=

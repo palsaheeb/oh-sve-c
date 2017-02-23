@@ -6,7 +6,7 @@
 -- Author     : Tomasz Wlostowski
 -- Company    : CERN
 -- Created    : 2011-01-24
--- Last update: 2014-01-15
+-- Last update: 2015-11-10
 -- Platform   : FPGA-generic
 -- Standard   : VHDL'93
 -------------------------------------------------------------------------------
@@ -76,6 +76,8 @@ entity flash_boot is
     spi_sclk_o : out std_logic;
     spi_mosi_o : out std_logic;
     spi_miso_i : in  std_logic;
+
+    flash_select_o: out std_logic;
 
     no_bitstream_p1_o : out std_logic
     );
@@ -177,11 +179,15 @@ begin  -- rtl
         xldr_start_o     <= '0';
         xldr_empty_o     <= '1';
         no_bitstream_int <= '0';
+        flash_select_o   <= '0';
       else
         case state is
 -- Wait until we are allowed to start flash boot sequence
           when STARTUP =>
+            flash_select_o <= '0';
+            
             if enable_i = '1' then
+              flash_select_o <= '1';
               state      <= SELECT_SDB;
               byte_count <= (others => '0');
             end if;
@@ -272,6 +278,8 @@ begin  -- rtl
           when NO_BITSTREAM =>
             flash_read       <= '0';
             no_bitstream_int <= '1';
+            flash_select_o <= '0';
+            
             if enable_i = '0' then
               state <= STARTUP;
             end if;
@@ -279,6 +287,7 @@ begin  -- rtl
 -- Bitstream was correctly loaded. Wait forever (or until reset).
           when BOOT_DONE =>
             flash_read <= '0';
+            flash_select_o <= '0';
             
         end case;
       end if;

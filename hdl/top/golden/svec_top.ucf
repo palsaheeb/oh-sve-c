@@ -256,3 +256,14 @@ NET "fmc0_scl_b" IOSTANDARD = "LVCMOS33";
 NET "fmc0_sda_b" IOSTANDARD = "LVCMOS33";
 
 
+NET "flash_sck_o" LOC=AG26;
+NET "flash_mosi_o" LOC=AH26;
+NET "flash_cs_n_o" LOC=AG27;
+NET "flash_miso_i" LOC=AH27;
+
+NET "flash_sck_o" IOSTANDARD = "LVCMOS33";
+NET "flash_mosi_o" IOSTANDARD = "LVCMOS33";
+NET "flash_cs_n_o" IOSTANDARD = "LVCMOS33";
+NET "flash_miso_i" IOSTANDARD = "LVCMOS33";
+
+

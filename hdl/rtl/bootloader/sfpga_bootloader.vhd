@@ -101,7 +101,9 @@ entity sfpga_bootloader is
     spi_cs_n_o : out std_logic;
     spi_sclk_o : out std_logic;
     spi_mosi_o : out std_logic;
-    spi_miso_i : in  std_logic
+    spi_miso_i : in  std_logic;
+
+    flash_select_o : out std_logic
     );
 
 end sfpga_bootloader;
@@ -168,6 +170,7 @@ architecture behavioral of sfpga_bootloader is
       spi_sclk_o        : out std_logic;
       spi_mosi_o        : out std_logic;
       spi_miso_i        : in  std_logic;
+      flash_select_o : out std_logic;
       no_bitstream_p1_o : out std_logic);
   end component;
 
@@ -270,6 +273,7 @@ begin  -- behavioral
       spi_sclk_o        => spi_sclk_o,
       spi_mosi_o        => spi_mosi_o,
       spi_miso_i        => spi_miso_i,
+      flash_select_o => flash_select_o,
       no_bitstream_p1_o => flash_no_bitstream_p1);
 
   -- Route host registers to the boot source multiplexer (p_select_boot_source).
@@ -290,7 +294,7 @@ begin  -- behavioral
 
   -- Multiplexes the access to the Xilinx Serial Bootloader module between
   -- the host (accessed via Wishbine registers) and the internal Flash loader
-  p_select_boot_source : process(from_host_ldr, from_flash_ldr, from_xilinx_boot)
+  p_select_boot_source : process(boot_source, from_host_ldr, from_flash_ldr, from_xilinx_boot)
   begin
     case boot_source is
       when FLASH =>
